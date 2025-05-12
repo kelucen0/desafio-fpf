@@ -4,14 +4,16 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Process
 from .serializers import ProcessSerializer
+from .tasks import process_nums
 
 
 class ProcessAPIView(APIView):
     def post(self, request):
         serializer = ProcessSerializer(data=request.data)
-        if serializer.is_valid: 
+        if serializer.is_valid(): 
             process = serializer.save()
-            number_process.delay(process.id)
+            print('oiiii')
+            process_nums.delay(process.id)
             return Response({"id": process.id, "status": process.status}, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

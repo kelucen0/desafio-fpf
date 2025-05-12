@@ -12,10 +12,11 @@ def median_calc(nums):
 def process_nums(process_id):
     try:
         p = Process.objects.get(id=process_id)
-        numeros = [p.num1, p.num2, p.num3]
-        p.media = media_calc(numeros)
-        p.mediana = median_calc(numeros)
+        nums = [p.numOne, p.numTwo, p.numThree]
+        p.media = media_calc(nums)
+        p.median = median_calc(nums)
         p.status = "Done"
         p.save()
+        print(f"Process {p.id} atualizado com média {p.media} e mediana {p.median}")
     except Process.DoesNotExist:
-        pass
+        print(f"Processo com ID {process_id} não encontrado.")
