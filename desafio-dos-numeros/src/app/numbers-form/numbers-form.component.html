@@ -1,0 +1,66 @@
+<div class="main-container">
+  <div class="form-container">
+    <mat-card class="form-card">
+      <mat-card-header>
+        <mat-card-title>Calcule a média e mediana</mat-card-title>
+        <br/>
+        <br/>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="numberForm" (ngSubmit)="numbersProcess()" class="form-inputs">
+          <mat-form-field appearance="fill">
+            <mat-label>Número 1</mat-label>
+            <input matInput type="number" formControlName="numOne" required />
+            <mat-error
+              *ngIf="num1Control.invalid && (num1Control.dirty || num1Control.touched)"
+            >
+              <span *ngIf="num1Control.errors?.['required']"
+                >Campo obrigatório</span
+              >
+              <span *ngIf="num1Control.errors?.['pattern']"
+                >Apenas números são permitidos</span
+              >
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Número 2</mat-label>
+            <input matInput type="number" formControlName="numTwo" required />
+            <mat-error
+              *ngIf="num2Control.invalid && (num2Control.dirty || num2Control.touched)"
+            >
+              <span *ngIf="num2Control.errors?.['required']"
+                >Campo obrigatório</span
+              >
+              <span *ngIf="num2Control.errors?.['pattern']"
+                >Apenas números são permitidos</span
+              >
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Número 3</mat-label>
+            <input matInput type="number" formControlName="numThree" required />
+            <mat-error
+              *ngIf="num3Control.invalid && (num3Control.dirty || num3Control.touched)"
+            >
+              <span *ngIf="num3Control.errors?.['required']"
+                >Campo obrigatório</span
+              >
+              <span *ngIf="num3Control.errors?.['pattern']"
+                >Apenas números são permitidos</span
+              >
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit">
+            Calcular
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="list-container">
+    <app-number-list></app-number-list>
+  </div>
+</div>
