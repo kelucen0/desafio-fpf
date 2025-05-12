@@ -12,7 +12,6 @@ class ProcessAPIView(APIView):
         serializer = ProcessSerializer(data=request.data)
         if serializer.is_valid(): 
             process = serializer.save()
-            print('oiiii')
             process_nums.delay(process.id)
             return Response({"id": process.id, "status": process.status}, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -17,6 +17,5 @@ def process_nums(process_id):
         p.median = median_calc(nums)
         p.status = "Done"
         p.save()
-        print(f"Process {p.id} atualizado com média {p.media} e mediana {p.median}")
     except Process.DoesNotExist:
         print(f"Processo com ID {process_id} não encontrado.")

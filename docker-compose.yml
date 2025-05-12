@@ -24,7 +24,7 @@ services:
     build:
       context: .
       dockerfile: docker/backend.Dockerfile
-    command: celery -A core worker -l info
+    command: celery -A desafio_dos_numeros_backend worker -l info
     volumes:
       - ./desafio_dos_numeros_backend:/app
     depends_on:
