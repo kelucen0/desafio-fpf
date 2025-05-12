@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.generics import ListAPIView
 from .models import Process
 from .serializers import ProcessSerializer
 from .tasks import process_nums
@@ -24,6 +25,8 @@ class StatusAPIView(APIView):
             return Response(serializer.data)
         except Process.DoesNotExist:
             return Response({"error": "Not found"}, status=status.HTTP_404_NOT_FOUND)
-
+class ListAllAPIView(ListAPIView):
+    queryset = Process.objects.all().order_by('-created_at')
+    serializer_class = ProcessSerializer
 
 

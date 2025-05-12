@@ -1,0 +1,28 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+.form-container {
+  width: 40%;
+}
+.list-container {
+  width: 40%;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-inputs > * {
+  margin-bottom: 16px;
+}
