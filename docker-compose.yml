@@ -38,3 +38,14 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    volumes:
+      - ./desafio-dos-numeros:/app
+    ports:
+      - "4200:4200"
+    command: npm start
+    depends_on:
+      - backend
